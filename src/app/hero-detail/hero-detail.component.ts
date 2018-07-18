@@ -9,9 +9,18 @@ import { HEROES } from './../mock-heroes';
 })
 export class HeroDetailComponent implements OnInit {
   hero: object;
+  private temp: any;
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.temp = this.route.params.subscribe(params => {
+      this.hero = HEROES.forEach((el) => {
+        if (el.id === +params['id']) {
+          console.log(el);
+          return el;
+        }
+      });
+    });
   }
 
 }
