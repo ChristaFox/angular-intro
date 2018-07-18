@@ -7,7 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeroComponent } from './hero/hero.component';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
-import { ToDoComponent } from './todo/to-do.component';
+import { TodoComponent } from './todo/todo.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ToDoComponent } from './todo/to-do.component';
     HeroComponent,
     HomeComponent,
     ContactComponent,
-    ToDoComponent
+    TodoComponent,
+    HeroDetailComponent
   ],
   imports: [
     BrowserModule,
