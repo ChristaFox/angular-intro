@@ -1,0 +1,8 @@
+.heroBox {
+  width: 90%;
+  height: 275px;
+  margin: auto;
+  margin-top: 10px;
+  border-radius: 2px;
+  border: 1px solid #727272;
+}
