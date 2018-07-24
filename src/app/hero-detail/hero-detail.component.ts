@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HEROES } from './../mock-heroes';
-import { Hero } from './../hero';
+import { HEROES } from '../mock-heroes';
+import { Hero } from '../hero';
 
 @Component({
   selector: 'app-hero-detail',
@@ -9,19 +9,23 @@ import { Hero } from './../hero';
   styleUrls: ['./hero-detail.component.css']
 })
 export class HeroDetailComponent implements OnInit {
-  // feilds --have a this identifier
-  public hero: Hero;
+  hero: Hero;
   private temp: any;
-
-  // constructor
+  newPower: string;
   constructor(private route: ActivatedRoute) { }
+  addPower() {
+    this.hero.powers.push(this.newPower);
+    this.newPower = '';
+  }
+  trackByIndex(index: number) {
+    return index.valueOf();
+  }
 
-  // methods
   ngOnInit() {
     this.temp = this.route.params.subscribe(params => {
+      // console.log(params);
       HEROES.forEach((el) => {
         if (el.id === +params['id']) {
-          const name = el.name;
           // console.log(el);
           this.hero = el;
         }

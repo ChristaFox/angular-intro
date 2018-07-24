@@ -13,11 +13,24 @@
   </div>
   <div class="row">
     <div class="col-md-4">
-      <img src="{{hero.img}}" alt="picture of hero">
+      <img src="{{hero.img}}" alt="{{hero.name}}" class="img-responsive">
     </div>
     <div class="col-md-8">
       <h3 class="text-center">Alter: {{hero.alter}}</h3>
       <p class="text-center">Bio: {{hero.bio}}</p>
+      <h2 class="text-center">Powers</h2>
+      <ul class="list-group">
+        <ng-container *ngFor="let power of hero.powers">
+          <li class="list-group-item">{{power}}</li>
+        </ng-container>
+      </ul>
+      <form action="POST" (ngSubmit)="addPower()">
+        <div class="form-group">
+          <label for="power">New Power</label>
+          <input type="text" id="power" name="power" class="form-control" placeholder="Power" [(ngModel)]="newPower">
+        </div>
+        <button class="btn btn-success">Add</button>
+      </form>
     </div>
   </div>
 </div>
@@ -51,6 +64,11 @@
           <div class="radio">
             <label><input type="radio" name="hero" [value]="false" [(ngModel)]="hero.hero">Villain</label>
           </div>
+          <ng-container *ngFor="let power of hero.powers; let i = index; trackBy: trackByIndex(i);">
+            <div class="form-group">
+              <input type="text" id="editPower" name="power" value="{{power}}" class="form-control" [(ngModel)]="hero.powers[i]">
+            </div>
+          </ng-container>
           <button class="btn btn-success" data-dismiss="modal">Update</button>
         </form>
       </div>
